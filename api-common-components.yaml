@@ -1,0 +1,94 @@
+components:
+  schemas:  
+    person:
+      type: object
+      required:
+        - firstName
+        - lastName
+      description: person object
+      properties:
+        firstName: 
+          $ref: "#/components/schemas/firstName"
+        lastName:
+          $ref: "#/components/schemas/lastName"
+        preferredName:
+          $ref: "#/components/schemas/preferredName"
+        phoneNumber:
+          $ref: "#/components/schemas/phoneNumber"
+        email:
+          $ref: "#/components/schemas/email"
+    address:
+      type: object
+      description: address object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        line1: 
+          type: string
+          description: Address Line 1 (e.g., street, PO Box, or company name).
+          minLength: 2
+          maxLength: 100
+        line2: 
+          type: string
+          description: Address Line 2 (e.g., apartment, suite, unit, or building).
+          minLength: 0
+          maxLength: 100 
+        city:
+          type: string
+          description: City, district, suburb, town, or village.
+          maxLength: 30   
+        county:
+          type: string
+          description: County, state, province, or region.
+          minLength: 2
+          maxLength: 30  
+        postalCode: 
+          type: string
+          description: ZIP or postal code.
+          minLength: 2
+          maxLength: 15  
+        country:
+           $ref: "#/components/schemas/country"
+    phoneNumber:
+      type: string
+      description: Phone number
+      example: 447511555511
+      minLength: 8
+    firstName:
+      type: string
+      description: First Name
+      minLength: 2
+      maxLength: 100
+      example: John
+    lastName:
+      type: string
+      description: Last Name
+      minLength: 2
+      maxLength: 100
+      example: Smith  
+    preferredName:
+      type: string
+      description: Preferred Name
+      minLength: 2
+      maxLength: 100
+      example: Johnny
+    email:
+      type: string
+      description: Email address
+      example: "john.smith@example.com"  
+    country:
+      type: string
+      description: Country name as per ISO 3166 https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes.
+      minLength: 2
+      maxLength: 30
+    countryCode:
+      type: string
+      example: GB
+      minLength: 2
+      maxLength: 2
+    url:
+      type: string
+      example: www.example.com
+      minLength: 2
+      maxLength: 2048
